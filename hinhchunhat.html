@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hinhchunhat</title>
+</head>
+<body>
+<canvas id="hcnCanvas" width="1000" height="1500" style=" border:2px #3ddc30">
+</canvas>
+<script>
+    function Rectangle(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.getx = function () {
+            return this.x;
+        };
+        this.setx = function (x) {
+            this.x = x;
+        };
+        this.gety = function () {
+            return this.y;
+        };
+        this.sety = function (y) {
+            this.y = y;
+        };
+        this.getWidth = function () {
+            return this.width;
+        };
+        this.setWidth = function (width) {
+            this.width = width;
+        };
+        this.getHeight = function () {
+            return this.height;
+        };
+        this.setHeight = function (height) {
+            this.height = height;
+        };
+
+        this.areaRectangle = function () {
+            let area;
+            area = this.width * this.height;
+            return area;
+        };
+        this.CircumferenceRectangle = function () {
+            let cir;
+            cir = (this.width + this.height) * 2;
+            return cir;
+
+        };
+        this.createRectangle = function () {
+            var ctx = document.getElementById("hcnCanvas").getContext("2d");
+            var color = getRandomColor();
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+
+    function getRandomHex() {
+        return Math.floor(Math.random() * 255);
+
+    }
+
+    function getRandomColor() {
+        var red = getRandomHex();
+        var green = getRandomHex();
+        var blue = getRandomHex();
+        return "rgb(" + red + "," + green + "," + blue + ")";
+    }
+
+
+    var width = parseInt(prompt("nhap chieu rong cua hinh chu nhat: "));
+    var height = parseInt(prompt("nhap chieu dai cua hinh chu nhat: "));
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    let Rectangle1 = new Rectangle(x, y, width, height);
+    Rectangle1.createRectangle();
+    let S = Rectangle1.areaRectangle();
+   let C =  Rectangle1.CircumferenceRectangle();
+ document.write("Dien tich hinh chu nhat: " + S + "<br>");
+ document.write("Chu vi hinh chu nhat la: " + C);
+
+</script>
+</body>
+</html>
